@@ -1,0 +1,14 @@
+.pytest_cache/
+__pycache__/
+build/
+dist/
+misc/
+packaging/
+ttwidgets/_vault/
+ttwidgets-*/
+ttwidgets.egg-info/
+vault/
+*.cmd
+*.url
+* - Copy*.py
+desktop.ini
