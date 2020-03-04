@@ -8,6 +8,7 @@ ttwidgets/_vault/
 ttwidgets-*/
 ttwidgets.egg-info/
 vault/
+BUGS.txt
 *.cmd
 *.url
 * - Copy*.py

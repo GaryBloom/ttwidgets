@@ -100,4 +100,4 @@ Copyright 2020 Gary Michael Bloom
 
 from .ttwidgets import *
 
-__version__ = "1.0.2"
+__version__ = "1.0.3a"
