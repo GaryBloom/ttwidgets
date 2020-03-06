@@ -4127,9 +4127,11 @@ if __name__ == "__main__":
             activebackground="aqua",
             activeforeground="red",
             anchor=tk.CENTER,
-            bd=2,
+            bd="6",  # 2
             disabledforeground="blue",
             highlightbackground="yellow",
+            highlightcolor="orange",
+            highlightthickness="4",
             justify=tk.CENTER,
             wraplength=0,
         )
@@ -4137,6 +4139,11 @@ if __name__ == "__main__":
         but_cfg_opts = but_opts.copy()
         but_pack_opts = dict(side=tk.LEFT, padx=2, pady=2)
         # , fill=tk.BOTH, expand=True{} # ) #
+        frame_cfg_opts = dict(
+            bg="wheat",
+            borderwidth=str(2),
+            relief=tk.GROOVE,
+         )
         frame_pack_opts = dict(side=tk.TOP, fill=tk.BOTH, expand=True)
         lab_nums = (
             1,
@@ -4147,7 +4154,7 @@ if __name__ == "__main__":
             2,
         )
         post_config_b = True
-        root.frame0 = frame0 = tk.Frame(root)
+        root.frame0 = frame0 = tk.Frame(root, **frame_cfg_opts)
         frame0.pack(fill=tk.X, expand=True)
         reg_but = tk.Button(
             frame0,
@@ -4704,9 +4711,7 @@ if __name__ == "__main__":
                     root.frames.append(
                         tk.Frame(
                             root,
-                            borderwidth=str(2),
-                            relief=tk.GROOVE,
-                            background="white",
+                           **frame_cfg_opts
                         )
                     )
                     root.frames[-1].pack(**frame_pack_opts)
