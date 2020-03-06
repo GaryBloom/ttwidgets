@@ -2,6 +2,7 @@
 __pycache__/
 build/
 dist/
+linting/
 misc/
 packaging/
 ttwidgets/_vault/
