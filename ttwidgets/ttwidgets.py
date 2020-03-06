@@ -1010,7 +1010,6 @@ def parse_tag_attrs(tag_str, options_d=None, font_d=None, case="", **kwargs):
     text_w = kwargs.pop(text_s, None)
     bad_opts = []
     # INTs: height repeatdelay repeatinterval underline width; size fun fov
-    print('TAG_STR is ', repr(tag_str))
     for keyval in split_attrs(tag_str):
         if "=" in keyval:
             key, val = keyval.split("=")

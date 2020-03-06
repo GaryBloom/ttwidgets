@@ -38,20 +38,7 @@ class Test_PyVers(unittest.TestCase):
 
 
 class Test_fromDicts(unittest.TestCase):
-
-    @classmethod
-    def setUpClass(self):
-        pass
-
-    @classmethod
-    def tearDownClass(self):
-        pass
-
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
+    """Test from dicts."""
 
     def test_get_tag_attrs_fromDicts1(self):
         o_d = dict(family="Courier New", background='white', fg='blue', bd='2',
@@ -128,6 +115,7 @@ class Test_fromDicts(unittest.TestCase):
 
 
 class Test_fromWidget(unittest.TestCase):
+    """Test from widget."""
 
     def test_get_tag_attrs_fromWidget1(self):
         but = ttwidgets.Button(bg='wheat',
