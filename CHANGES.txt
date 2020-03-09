@@ -2,4 +2,4 @@ v1.0.0, Mar 01, 2020 -- Initial release.
 v1.0.1, Mar 02, 2020 -- Updated with code on GitHub
 v1.0.2, Mar 02, 2020 -- Updated Package URL and supported Python versions
 v1.0.3, Mar 04, 2020 -- Fixes for Linux Test
-v1.0.4, Mar 04, 2020 -- More Fixes for Linux and Darwin
+v1.0.4, Mar 09, 2020 -- More Fixes for Linux and Darwin. Dropped Py3.4 support.

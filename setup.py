@@ -27,7 +27,6 @@ setuptools.setup(
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
@@ -44,7 +43,7 @@ setuptools.setup(
     packages=['ttwidgets', 'ttwidgets.test', ], # setuptools.find_packages(),
     package_data={},
     py_modules=[],
-    python_requires='>=3.4',
+    python_requires='>=3.5',
     scripts=[],
     url="https://github.com/GaryBloom/ttwidgets",
 )

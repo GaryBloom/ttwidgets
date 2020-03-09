@@ -2132,7 +2132,10 @@ class TTWidget(tk.Frame):
             if overrelief:
                 relief = self._widget_cget(relief_s)
                 tk.Frame.config(self, relief=relief)
-            if self._widget_cget(state_s) == tk.ACTIVE:
+            if (
+                    platform.system() != "Windows"
+                    and self._widget_cget(state_s) == tk.ACTIVE
+            ):
                 self._enable()
         return
 
@@ -2605,7 +2608,7 @@ class TTWidget(tk.Frame):
                             )
                         self._depressed_w.unbind(seq, funcid)
         self._depressed_w = None
-        return self._enable()
+        return self._enable() if platform.system() == "Windows" else None
 
     @staticmethod
     def _reorder_dict(d):

@@ -76,9 +76,8 @@ This package includes the following:
 
 
     Compatability:
-        Py 3.4 - 3.9 is supported.
-          (Runs on Py 3.1 - 3.3 but with some anomalies in TTListbox that were worked around)
-        Py 3.0 and earlier are unsupported
+        Py 3.5 - 3.9 is supported.
+        Py 3.4 and earlier are unsupported
 
 Copyright 2020 Gary Michael Bloom
 
@@ -100,4 +99,4 @@ Copyright 2020 Gary Michael Bloom
 
 from .ttwidgets import *
 
-__version__ = "1.0.3a"
+__version__ = "1.0.4"
