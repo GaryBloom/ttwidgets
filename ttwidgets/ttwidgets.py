@@ -2930,23 +2930,28 @@ class TTWidget(tk.Frame):
             kwargs[option] = value
         count_i = len(kwargs)
         for opt, val in kwargs.items():
-            try:  # if True: #
+            if opt in self.widget.keys():
                 self.widget.config(**{opt: val})
-                success_i += 1
-            except NameError:  # else: #
-                self._print(
-                    "EXCEPTION While Configuring {o} with {v}".format(
-                        o=opt, v=val
-                    ),
-                    Raise=True,
-                )
-            except tk.TclError:  # else: #
-                self._print(
-                    "EXCEPTION While Configuring {o} with {v}".format(
-                        o=opt, v=val
-                    ),
-                    Raise=True,
-                )
+            else:
+                setattr(self.widget, opt, val)
+            # try:  # if True: #
+                # self.widget.config(**{opt: val})
+                # success_i += 1
+            # except NameError:  # else: #
+                # self._print(
+                    # "EXCEPTION While Configuring {o} with {v}".format(
+                        # o=opt, v=val
+                    # ),
+                    # Raise=True,
+                # )
+            # except tk.TclError:  # else: #
+                # setattr(self.widget, opt, val)
+                # self._print(
+                    # "EXCEPTION While Configuring {o} with {v}".format(
+                        # o=opt, v=val
+                    # ),
+                    # Raise=True,
+                # )
         if value == sentinel:
             config_d = self.widget.config()
             if not option:
@@ -3319,7 +3324,8 @@ class TTWidget(tk.Frame):
                         self.textvariable = textvariable = val
                         if self.observer and textvariable:
                             textvariable.trace_delete("w", self.observer)
-                        self.observer = val.trace("w", self._trace_callback)
+                        if val:
+                            self.observer = val.trace("w", self._trace_callback)
                     elif key == underline_s:
                         self._underline(val)  # post-procreation...
                     else:
@@ -3935,10 +3941,10 @@ class TTToolTip:
                 "<ButtonPress-{RMB}>".format(RMB=RMB), self._leave
             )
         self._aid = None
-        self._top = tk.Toplevel(self.widget)
-        self._top.withdraw()
-        self.ttlabel = TTLabel(self._top, **options)
-        self.ttlabel.pack(ipadx=self.ipadx, ipady=self.ipady)
+        self._top = None  # tk.Toplevel(self.widget)
+        # self._top.withdraw()
+        self.ttlabel = TTLabel(**options)
+        # self.ttlabel.pack(ipadx=self.ipadx, ipady=self.ipady)
 
     def _cancel(self):
         if self._aid:
@@ -3980,10 +3986,14 @@ class TTToolTip:
                 + self.widget.winfo_height()
                 - self.offsety
             )
-        if self._top:
-            self._top.deiconify()
+        if not self._top:
+            self._top = tk.Toplevel(self.widget)
+            ttlabel_cfg = _get_pared_cfg(self.ttlabel.config())
+            print(pprint.pformat(ttlabel_cfg))
+            self.ttlabel.destroy()
+            self.ttlabel = TTLabel(self._top, **ttlabel_cfg)
+            self.ttlabel.pack()
             self._top.wm_overrideredirect(True)
-            self._top.wm_geometry("+%d+%d" % (x0, y0))
             if Platform_s == "Darwin":
                 try:
                     self._top.tk.call(
@@ -3995,6 +4005,9 @@ class TTToolTip:
                     )
                 except tk.TclError:
                     pass
+        else:
+            self._top.deiconify()
+        self._top.wm_geometry("+%d+%d" % (x0, y0))
 
     @staticmethod
     def alias(option=None):
@@ -4113,6 +4126,8 @@ Label = TTLabel
 Listbox = TTListbox
 ToolTip = TTToolTip
 __init_widget_option_unaliases_d()
+####
+get_font_fmt = gen_tag_attrs
 
 if __name__ == "__main__":
 
